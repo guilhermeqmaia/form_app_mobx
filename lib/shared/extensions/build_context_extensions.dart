@@ -11,4 +11,14 @@ extension BuildContextExtensions on BuildContext {
   Future<void> launch(String url) async {
     await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
   }
+
+  void showSnackBar(String message, [bool isError = false]) {
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: isError ? Colors.red : Colors.green,
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
 }

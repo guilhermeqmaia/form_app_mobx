@@ -7,12 +7,18 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
+  @observable
+  bool isLoading = false;
+
   final LoginUseCase _loginUseCase;
 
   _LoginStore(this._loginUseCase);
 
   @action
-  Future<LoginResult> login(String email, String password) async {
-    return _loginUseCase(email, password);
+  Future<LoginResult> login(String user, String password) async {
+    isLoading = true;
+    final result = await _loginUseCase(user, password);
+    isLoading = false;
+    return result;
   }
 }

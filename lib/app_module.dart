@@ -14,7 +14,7 @@ class AppModule extends Module {
     Bind.factory<MockApi>((i) => MockApi()),
 
     //Usecases
-    Bind.factory<LoginUseCase>((i) => LoginUseCase(i(), i())),
+    Bind.factory<LoginUseCase>((i) => LoginUseCase(i())),
 
     //Stores
     Bind.singleton<LoginStore>((i) => LoginStore(i())),
