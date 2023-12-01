@@ -41,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
                         "Credenciais inválidas, verifique se você digitou corretamente",
                         true,
                       );
+                    } else {
+                      Modular.to.pushNamed('/info_capture');
                     }
                   });
                 },
