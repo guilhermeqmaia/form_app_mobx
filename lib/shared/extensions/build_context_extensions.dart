@@ -18,6 +18,8 @@ extension BuildContextExtensions on BuildContext {
         content: Text(message),
         backgroundColor: isError ? Colors.red : Colors.green,
         duration: const Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 100),
       ),
     );
   }
