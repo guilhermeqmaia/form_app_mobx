@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               LoginForm(
                 onLogin: (user, password) async {
+                  FocusManager.instance.primaryFocus?.unfocus();
                   store.login(user, password).then((result) {
                     if (result == LoginResult.unexpectedError) {
                       context.showSnackBar(
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                         true,
                       );
                     } else {
-                      Modular.to.pushNamed('/info_capture');
+                      Modular.to.pushReplacementNamed('/info_capture');
                     }
                   });
                 },

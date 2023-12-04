@@ -1,5 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:target_test/features/info_capture/info_capture_page.dart';
+import 'package:target_test/features/info_capture/info_capture_store.dart';
+import 'package:target_test/features/info_capture/usecase/fetch_info_usecase.dart';
+import 'package:target_test/features/info_capture/usecase/set_info_usecase.dart';
 import 'package:target_test/features/login/login_page.dart';
 import 'package:target_test/features/login/login_store.dart';
 import 'package:target_test/features/login/usecase/login_use_case.dart';
@@ -15,9 +18,12 @@ class AppModule extends Module {
 
     //Usecases
     Bind.factory<LoginUseCase>((i) => LoginUseCase(i())),
+    Bind.factory<SetInfoUsecase>((i) => SetInfoUsecase(i())),
+    Bind.factory<FetchInfoUsecase>((i) => FetchInfoUsecase(i())),
 
     //Stores
     Bind.singleton<LoginStore>((i) => LoginStore(i())),
+    Bind.singleton<InfoCaptureStore>((i) => InfoCaptureStore(i(), i())),
   ];
 
   @override
